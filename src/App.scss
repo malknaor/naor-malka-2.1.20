@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.theme--light {
+    background: white;
+    color: black;
+}
+
+.theme--dark {
+    background: rgb(80, 80, 80);
+    color: white;
+}
+
+.app {
+    height: 100vh;
+    width: 100vw;
+}
