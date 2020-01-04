@@ -1,0 +1,15 @@
+$lightThemeTextColor: black;
+$lightThemeBackgroundColor: white;
+
+$darkThemeTextColor: white;
+$darkThemeBackgroundColor: rgb(68, 68, 68);
+
+.theme--light {
+    background: $lightThemeBackgroundColor;
+    color: $lightThemeTextColor;
+}
+
+.theme--dark {
+    background: $darkThemeBackgroundColor;
+    color: $darkThemeTextColor;
+}

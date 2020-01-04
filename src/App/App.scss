@@ -1,0 +1,34 @@
+@import './theme';
+
+$font-stack: 'Lato';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Lato', 'Ariel', sans-serif;
+}
+
+.app__header{
+    flex: 0.1;
+    display: flex;
+    width: 100%;
+    height: 10%;
+}
+
+.app__content{
+    flex: 0.9;
+    display: flex;
+    width: 100%;
+    height: 90%;
+
+}
