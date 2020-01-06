@@ -1,37 +1,20 @@
-import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Checkbox } from 'semantic-ui-react';
+
+import Toggle from 'react-toggle';
 
 import './ToggleButton.scss';
 
-class ToggleButton extends Component {
-    state = { isActive: false, text: 'off' };
+const ToggleButton = props => {
+    const { label, onToggle } = props;
 
-    toggle = () => {
-        const { onToggle } = this.props;
-        const { isActive } = this.state;
+    return (
+        <div className="toggle-button">
+            <label className="toggle-button__label">{label}</label>
+            <Toggle  className="toggle-button__button" onChange={onToggle} />
+        </div>
+    );
+};
 
-        this.setState({ isActive: !isActive, text: isActive? 'off' : 'on' });
-
-        if (onToggle) {
-            onToggle();
-        }
-    }
-
-    render() {
-        const { isActive, text } = this.state;
-
-        return (
-            <Button
-                toggle
-                className="menu-toggle-button"
-                active={isActive}
-                onClick={this.toggle}
-                floated="right"
-                size="tiny">
-                {text}
-            </Button>
-        )
-    }
-}
 
 export default ToggleButton;

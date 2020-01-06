@@ -7,12 +7,11 @@ import DropDownMenu from './DropDownMenu';
 
 const DropDownMenuContainer = props => {
     const { settings, changeTheme, changeMetric } = props;
-    const { isDarkMode, isMetric } = settings;
+    const { isMetric } = settings;
 
     return (
-        <DropDownMenu 
+        <DropDownMenu className="dropdown-menu"
             themeMode={settings.themeMode}
-            isDarkMode={isDarkMode} 
             changeTheme={changeTheme} 
             isMetric={isMetric} 
             changeMetric={changeMetric} 

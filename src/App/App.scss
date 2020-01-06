@@ -1,11 +1,18 @@
-@import './theme';
-
-$font-stack: 'Lato';
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+:root {
+    --color-theme: orangered;
+    --color-theme-secondary: rgb(204, 75, 29);
+    --color-surface: rgb(230, 230, 230);
+    --color-secondary-surface: rgb(240, 240, 240);
+    --color-solid: black;
+    --color-primary: teal;
+    --color-secondary: rgb(0, 184, 184);
+    --color-card: rgb(222, 235, 235);
 }
 
 .app {
@@ -16,6 +23,8 @@ $font-stack: 'Lato';
     font-weight: 300;
     font-size: 20px;
     font-family: 'Lato', 'Ariel', sans-serif;
+    background-color: var(--color-surface);
+    color: var(--color-solid);
 }
 
 .app__header{
@@ -23,6 +32,7 @@ $font-stack: 'Lato';
     display: flex;
     width: 100%;
     height: 10%;
+    background-color: var(--color-surface);
 }
 
 .app__content{
@@ -30,5 +40,5 @@ $font-stack: 'Lato';
     display: flex;
     width: 100%;
     height: 90%;
-
+    background-color: var(--color-secondary-surface);
 }
