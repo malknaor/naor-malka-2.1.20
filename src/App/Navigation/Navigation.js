@@ -6,11 +6,13 @@ import DropDownMenuContainer from '../common/DropDownMenuContainer';
 import './Navigation.scss';
 
 const Navigation = props => {
+    const { themeMode } = props;
+
     return (
         <div className="navigation">
             <div className="navigation__title">
                 <h2 className="navigation__title-header">
-                    <Icon className="navigation__title-icon sun icon" />
+                    <Icon className={`navigation__title-icon${themeMode === 'light' ? '--sun sun' : '--moon moon'} icon`} />
                     forecaster
                 </h2>
             </div>

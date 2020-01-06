@@ -1,8 +1,9 @@
 const themeChanger = (() => {
     let currentTheme = 'light';
-
+    
     const lightTheme = {
         "--color-theme": "orangered",
+        "--color-theme-secondary": "rgb(204, 75, 29)",
         "--color-solid": "black",
         "--color-surface": "rgb(230, 230, 230)",
         "--color-secondary-surface": "rgb(240, 240, 240)",
@@ -12,7 +13,8 @@ const themeChanger = (() => {
     };
     
     const darkTheme = {
-        "--color-theme": "orangered",
+        "--color-theme": "rgb(255, 252, 119)",
+        "--color-theme-secondary": "rgb(216, 216, 36)",
         "--color-solid": "white",
         "--color-surface": "#121212",
         "--color-secondary-surface": "#212121",

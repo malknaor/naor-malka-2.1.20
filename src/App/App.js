@@ -10,10 +10,9 @@ const App = props => {
     const { themeMode } = props;
 
     return (
-        // <div className={`app theme--${themeMode}`}>
         <div className="app">
             <div className="app__header">
-                <Navigation />
+                <Navigation themeMode={themeMode}/>
             </div>
             <div className="app__content">
                 <Switch>

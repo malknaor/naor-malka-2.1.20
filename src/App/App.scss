@@ -6,7 +6,7 @@
 
 :root {
     --color-theme: orangered;
-    --color-theme-secondary: rgb(204, 75, 29);
+    --color-theme-secondary: rgb(216, 216, 36);
     --color-surface: rgb(230, 230, 230);
     --color-secondary-surface: rgb(240, 240, 240);
     --color-solid: black;
@@ -17,6 +17,7 @@
 
 .app {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
@@ -25,20 +26,22 @@
     font-family: 'Lato', 'Ariel', sans-serif;
     background-color: var(--color-surface);
     color: var(--color-solid);
-}
 
-.app__header{
-    flex: 0.1;
-    display: flex;
-    width: 100%;
-    height: 10%;
-    background-color: var(--color-surface);
-}
+    &__header{
+        flex: 0.1;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 10%;
+        background-color: var(--color-surface);
+    }
 
-.app__content{
-    flex: 0.9;
-    display: flex;
-    width: 100%;
-    height: 90%;
-    background-color: var(--color-secondary-surface);
+    &__content{
+        flex: 0.9;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-secondary-surface);
+    }
 }
