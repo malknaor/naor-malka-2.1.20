@@ -2,21 +2,24 @@
     display: flex;
     align-self: center;
     justify-content: baseline;
-    align-items: center;
     width: 96%;
     height: 96%;
-    padding: 1%;
-    margin: 1%;
+    padding: 2%;
+    min-width: 150px;
 
     &__button {
         flex: 0.2;
         align-self: center;
+        margin: 1%;
     }
     
     &__label {
         flex: 0.8;
         color: var(--color-solid);
         align-self: center;
+        font-size: 70%;
+        white-space: nowrap;
+        margin: 1%;
     }
 
     .react-toggle {

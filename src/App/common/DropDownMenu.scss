@@ -26,12 +26,11 @@
         position: fixed;
         top: 6%;
         right: 3.5%;
-        width: 200px;
+        width: max-content;
         height: fit-content;
         padding: .2%;
         border-radius: 5px;
         transition: .3s;
-        font-size: 80%;
     
         &--visible {
             display: flex;

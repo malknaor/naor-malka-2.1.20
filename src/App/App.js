@@ -7,12 +7,12 @@ import Favorites from './Favorites/Favorites';
 import './App.scss';
 
 const App = props => {
-    const { themeMode } = props;
+    const { themeMode, changeTheme, changeMetric } = props;
 
     return (
         <div className="app">
             <div className="app__header">
-                <Navigation themeMode={themeMode}/>
+                <Navigation themeMode={themeMode} changeTheme={changeTheme} changeMetric={changeMetric} />
             </div>
             <div className="app__content">
                 <Switch>

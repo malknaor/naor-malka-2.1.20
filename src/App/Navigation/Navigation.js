@@ -2,11 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 
+import changeCurrentTheme from '../../services/theme';
+import ToggleButton from '../common/ToggleButton';
 import DropDownMenuContainer from '../common/DropDownMenuContainer';
 import './Navigation.scss';
+import DropDownMenuItem from '../common/DropDownMenuItem';
 
 const Navigation = props => {
-    const { themeMode } = props;
+    const { themeMode, changeTheme, changeMetric } = props;
 
     return (
         <div className="navigation">
@@ -31,7 +34,17 @@ const Navigation = props => {
                 </ul>
             </div>
             <div className="navigation__settings">
-                <DropDownMenuContainer />
+                <DropDownMenuContainer iconName='cog'>
+                    <DropDownMenuItem>
+                        <ToggleButton label="dark theme" onToggle={() => {
+                            changeTheme();
+                            changeCurrentTheme();
+                        }} />
+                    </DropDownMenuItem>
+                    <DropDownMenuItem>
+                        <ToggleButton label="metric" onToggle={changeMetric} />
+                    </DropDownMenuItem>
+                </DropDownMenuContainer>
             </div>
         </div>
     );

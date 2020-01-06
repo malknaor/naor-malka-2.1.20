@@ -6,16 +6,20 @@ import { changeTheme, changeMetric } from '../../actions';
 import DropDownMenu from './DropDownMenu';
 
 const DropDownMenuContainer = props => {
-    const { settings, changeTheme, changeMetric } = props;
+    const { settings, changeTheme, changeMetric, iconName } = props;
     const { isMetric } = settings;
 
     return (
-        <DropDownMenu className="dropdown-menu"
+        <DropDownMenu 
+            className="dropdown-menu"
+            iconName={iconName}
             themeMode={settings.themeMode}
             changeTheme={changeTheme} 
             isMetric={isMetric} 
             changeMetric={changeMetric} 
-        />
+        >
+            {props.children}
+        </DropDownMenu>
     );
 };
 
