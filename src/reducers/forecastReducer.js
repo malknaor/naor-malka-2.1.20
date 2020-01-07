@@ -2,8 +2,8 @@ import { SEARCH_AUTOCOMPLETE, FETCH_CURRENT_WEATHER, FETCH_FORECAST_5D } from '.
 
 const forecastInitState = {
     autoComplete: [],
-    currentLocationWeather: null,
-    locationForecast: null
+    currentWeather: null,
+    forecast: null
 };
 
 const forecastReducer = (state = forecastInitState, action) => {
@@ -11,9 +11,9 @@ const forecastReducer = (state = forecastInitState, action) => {
         case SEARCH_AUTOCOMPLETE:
             return { ...state, autoComplete: action.payload };
         case FETCH_CURRENT_WEATHER:
-            return { ...state, currentLocationWeather: action.payload };
+            return { ...state, currentWeather: action.payload };
         case FETCH_FORECAST_5D:
-            return { ...state, locationForecast: action.payload };
+            return { ...state, forecast: action.payload };
         default:
             return state;
     }
