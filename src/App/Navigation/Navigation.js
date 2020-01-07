@@ -5,8 +5,8 @@ import { Icon } from 'semantic-ui-react';
 import changeCurrentTheme from '../../services/theme';
 import ToggleButton from '../common/ToggleButton';
 import DropDownMenuContainer from '../common/DropDownMenuContainer';
-import './Navigation.scss';
 import DropDownMenuItem from '../common/DropDownMenuItem';
+import './Navigation.scss';
 
 const Navigation = props => {
     const { themeMode, changeTheme, changeMetric } = props;

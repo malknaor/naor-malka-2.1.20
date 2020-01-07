@@ -23,14 +23,14 @@ const themeChanger = (() => {
         "--color-card": "rgb(222, 235, 235)"
     };
 
-    const applyTheme = () => {
+    const changeTheme = () => {
         const theme = currentTheme === 'light' ? darkTheme : lightTheme;
         currentTheme = currentTheme === 'light' ? 'dark' : 'light';
 
         Object.entries(theme).forEach(current => document.documentElement.style.setProperty(current[0], current[1]));
     }
 
-    return applyTheme;
+    return changeTheme;
 })();
 
 export default themeChanger;

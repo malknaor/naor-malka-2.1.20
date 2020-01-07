@@ -2,9 +2,11 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Navigation from './Navigation/Navigation';
-import Home from './Home/Home';
-import Favorites from './Favorites/Favorites';
+import HomeContainer from './Home/HomeContainer';
+import asyncComponent from './common/AsyncComponent';
 import './App.scss';
+
+const FavoritesContainer = asyncComponent(()=> import('./Favorites/FavoritesContainer').then(module => module.default));
 
 const App = props => {
     const { themeMode, changeTheme, changeMetric } = props;
@@ -17,8 +19,8 @@ const App = props => {
             <div className="app__content">
                 <Switch>
                     <Redirect path='/' exact to='/home' />
-                    <Route path='/home' component={Home} />
-                    <Route path='/favorites' component={Favorites} />
+                    <Route path='/home' component={HomeContainer} />
+                    <Route path='/favorites' component={FavoritesContainer} />
                 </Switch>
             </div>
         </div>
