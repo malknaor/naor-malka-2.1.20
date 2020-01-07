@@ -1,5 +1,4 @@
-import { CHANGE_THEME } from '../actions/actionTypes';
-import { CHANGE_UNITS } from '../actions/actionTypes';
+import { CHANGE_THEME, CHANGE_UNITS } from '../actions/actionTypes';
 
 const initialThemeState = {
     themeMode: 'light',
@@ -11,7 +10,6 @@ const settingsReducer = (state = initialThemeState, action) => {
         case CHANGE_THEME:
             return { ...state, themeMode: state.themeMode === 'light'? 'dark' : 'light' };
         case CHANGE_UNITS:
-            console.log("TCL: settingsReducer -> isMetric", !state.isMetric)
             return { ...state, isMetric: !state.isMetric };
         default:
             return state;
