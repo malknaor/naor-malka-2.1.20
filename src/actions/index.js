@@ -19,7 +19,6 @@ export const searchAutoComplete = searchValue => async dispatch => {
             }
         });
 
-        console.log("TCL: searchAutoComplete -> response", response);
         dispatch({ type: actionTypes.SEARCH_AUTOCOMPLETE, payload: response });
     } catch (error) {
         console.error("TCL: searchAutoComplete -> error", error);
@@ -58,6 +57,10 @@ export const getLocationKeyGeoposition = async (latitude, longitude) => {
     }
 };
 
+export const setCurrentLocation = location => {
+    return { type: actionTypes.SET_CURRENT_LOCATION, payload: location };
+};
+
 export const getCurrentWeather = (city, isMetric = false) => async dispatch => {
     try {
         const { CURRENT_WEATHER } = accuWeatherRoutes;
@@ -66,7 +69,10 @@ export const getCurrentWeather = (city, isMetric = false) => async dispatch => {
         if (parseInt(city)) {
             cityKey = city;
         } else {
-            cityKey = await getLocationKey(city).then(response => response.Key);
+            const location = await getLocationKey(city);
+            
+            dispatch(setCurrentLocation(location));
+            cityKey = location.Key;
         }
 
         const { data } = await accuWeather.get(`${CURRENT_WEATHER}${cityKey}`, {
@@ -75,8 +81,8 @@ export const getCurrentWeather = (city, isMetric = false) => async dispatch => {
                 metric: isMetric
             }
         });
-
-        dispatch({ type: actionTypes.FETCH_CURRENT_WEATHER, payload: data });
+        
+        dispatch({ type: actionTypes.FETCH_CURRENT_WEATHER, payload: data[0] });
     } catch (error) {
         console.error("TCL: getLocationKey -> error", error);
     }
@@ -90,7 +96,10 @@ export const getLocationForecast = (city, isMetric = false) => async dispatch =>
         if (parseInt(city)) {
             cityKey = city;
         } else {
-            cityKey = await getLocationKey(city).then(response => response.Key);
+            const location = await getLocationKey(city);
+            
+            dispatch(setCurrentLocation(location));
+            cityKey = location.Key;
         }
 
         const { data } = await accuWeather.get(`${LOCATION_FORECAST}${cityKey}`, {

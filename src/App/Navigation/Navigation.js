@@ -14,10 +14,7 @@ const Navigation = props => {
     return (
         <div className="navigation">
             <div className="navigation__title">
-                <h2 className="navigation__title-header">
-                    <Icon className={`navigation__title-icon${themeMode === 'light' ? '--sun sun' : '--moon moon'} icon`} />
-                    forecaster
-                </h2>
+                <Icon className={`navigation__title-icon${themeMode === 'light' ? '--sun sun' : '--moon moon'} icon`}>forecaster</Icon>
             </div>
             <div className="navigation__nav">
                 <ul className="navigation__nav-list">

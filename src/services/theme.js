@@ -9,7 +9,9 @@ const themeChanger = (() => {
         "--color-secondary-surface": "rgb(240, 240, 240)",
         "--color-primary": "teal",
         "--color-secondary": "rgb(0, 184, 184)",
-        "--color-card": "rgb(222, 235, 235)"
+        "--color-card": "rgb(222, 235, 235)",
+        "--box-shadow": "0 4px 8px 0 rgba(0, 0, 0, 0.3)",
+        "--box-shadow-hover": "0 4px 8px 0 rgba(0, 0, 0, 0.4)"
     };
     
     const darkTheme = {
@@ -20,7 +22,9 @@ const themeChanger = (() => {
         "--color-secondary-surface": "#212121",
         "--color-primary": "#313131",
         "--color-secondary": "#414141",
-        "--color-card": "rgb(222, 235, 235)"
+        "--color-card": "rgb(222, 235, 235)",
+        "--box-shadow": "0 4px 8px 0 rgba(149, 149, 149, 0.3)",
+        "--box-shadow-hover": "0 4px 8px 0 rgba(149, 149, 149, 0.4)"
     };
 
     const changeTheme = () => {

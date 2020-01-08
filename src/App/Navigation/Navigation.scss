@@ -6,72 +6,65 @@
     align-items: baseline;
     height: 100%;
     width: 100%;
-    margin: 0;
     border-bottom: 1px solid var(--color-theme);
-
+    
     .navigation__title {
         flex: 0.15;
         display: flex;
         align-self: center;
-        justify-content: center;
-        align-items: center;
-        font-size: 100%;
-    
+        height: 100%;
+        width: 100%;
+        
         &-icon {
-            flex: 0.2;
-            height: 100%;
-            transition: .3s ease;
-            
-            &--sun {
-                color: var(--color-theme);
-            }
-            
-            &--moon {
-                color: var(--color-theme);
-            }
-        }
-    
-        &-header {
-            flex: 0.75;
+            flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: baseline;
-            text-align: justify;
+            transition: .3s ease;
             height: 100%;
+            width: 100%;
+                
+            &--sun, &--moon {
+                flex: 1;
+                align-self: center;
+                font-size: calc(1rem + 1vw);
+                color: var(--color-theme);
+                margin: 0;
+            }
         }
     }
     
     .navigation__nav {
-        flex: 0.85;
+        flex: 0.8;
         align-self: center;
-        font-size: 90%;
-        width: 90%;
-        padding: 0 2.5%;
+        height: 100%;
+        width: 100%;
+        margin: 0;
     
         &-list {
             flex: 1;
             display: flex;
-            justify-content: flex-start;
-            align-items: baseline;
+            justify-content: center;
             list-style: none;
             height: 100%;
-            width: 100%;
+            width: 80%;
+            margin: 0;
         }
     
         &-item {
             flex: 1;
             display: flex;
+            align-self: center;
+            height: fit-content;
             max-width: fit-content;
-            height: 100%;
-            width: 96%;
+            width: 80%;
             padding: 0 2%
         }
     
         &-link {
             flex: 1;
             color: var(--color-solid);
-            font-size: 80%;
             transition: .3s ease;
+            border-bottom: 1px solid transparent;
+            font-size: calc(1rem + 0.1vw);
         
             &--active{
                 color: var(--color-theme);
@@ -79,6 +72,7 @@
         
             &:hover {
                 color: var(--color-theme);
+                border-bottom: 1px solid var(--color-theme);
             }
         }
     }
@@ -86,6 +80,12 @@
     .navigation__settings {
         flex: 0.05;
         display: flex;
+        align-items: center;
         align-self: center;
+        text-align: center;
+        font-size: calc(1rem + .5vw);
+        width: 100%;
+        height: 100%;
+        margin: 0;
     }
 }

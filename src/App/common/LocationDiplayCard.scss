@@ -1,0 +1,193 @@
+.location {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface);
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    transition: .3s ease;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--color-theme);
+
+    
+    &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        box-shadow: var(--box-shadow-hover);
+    }
+    
+    &__current{
+        flex: 0.4;
+        display: flex;
+        height: 99%;
+        width: 98%;
+        margin: 1%;
+        margin-bottom: 0;
+        
+        // remove later
+        background-color: blue;
+        border-radius: 20px 20px 0 0;
+        
+        .fav-icon {
+            flex: 1;
+            align-self: center;
+            font-size: 2rem;
+            color: red;
+        }
+
+        .current-weather {
+            flex: 1;
+            display: flex;
+            
+            &__city {
+                flex: 1.5;
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+                height: 100%;
+
+                // remove later
+                background-color: burlywood;
+                border-radius: 20px 0 0 0;
+
+                .city {
+                    &__p {
+                        flex: 0.25;
+                        margin: 0;
+                        font-size: 1rem;
+                        text-align: center;
+                    }
+                    
+                    &__title {
+                        flex: 0.25;
+                        font-size: 1.3rem;
+                        font-family: 'sans-serif';
+                        text-align: center;
+                    }
+                    
+                    &__description {
+                        flex: 0.25;
+                        font-size: 1rem;
+                        text-align: center;
+                    }
+                    
+                    &__temperature {
+                        flex: 0.25;
+                        font-size: 1rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    
+    &__forecast{
+        flex: 0.6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 98%;
+        width: 98%;
+        margin: 1%;
+        padding: 1%;
+        margin-top: 0;
+        border-radius: 0 0 20px 20px;
+
+        // remove later
+        background-color: cadetblue;
+        
+        &__headline {
+            flex: 0.2
+        }
+        
+        .forecast {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            height: 100%;
+            width: 100%;
+
+            &__headline {
+                flex: 0.3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+
+                p {
+                    flex: 1;
+                    font-size: 1rem;
+                    text-align: center;
+                }
+            }
+
+            &__daily {
+                flex: 0.7;
+                display: flex;
+                justify-content: space-between;
+                align-items: stretch;
+                width: 90%;
+                height: fit-content;
+    
+                .daily {
+                    flex: 0.2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-content: center;
+                    width: fit-content;
+                    margin: 1%;
+                    
+                    // remove later
+                    background-color: chartreuse;
+
+                    &__date {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly; 
+
+                        .date {
+                            &__day {
+                                font-size: 1.3rem;
+                                text-align: center;
+                            }
+                            
+                            &__date {
+                                font-size: 1rem;
+                                text-align: center;
+                            }
+                        }
+                    }
+                    
+                    &__weather{
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly; 
+
+                        .weather {
+                            
+                            &__minmax {
+                                font-size: 1rem;
+                                text-align: center;
+                            }
+
+                            &__day {
+                                font-size: 1rem;
+                                text-align: center;
+                            }
+
+                            &__night {
+                                font-size: 1rem;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

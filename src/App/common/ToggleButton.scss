@@ -17,7 +17,8 @@
         flex: 0.8;
         color: var(--color-solid);
         align-self: center;
-        font-size: 70%;
+        text-align: start;
+        font-size: calc(1rem + 0.1vw);
         white-space: nowrap;
         margin: 1%;
     }
