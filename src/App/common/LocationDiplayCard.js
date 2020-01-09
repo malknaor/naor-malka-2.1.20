@@ -1,16 +1,16 @@
 import React from 'react';
-
-import './LocationDiplayCard.scss';
 import { Icon } from 'semantic-ui-react';
-import { convertFahrenheitToCelcius } from '../../api/utils';
+
+import { convertFahrenheitToCelcius } from '../../utils';
+import './LocationDiplayCard.scss';
 
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const LocationDiplayCard = props => {
-    const { isFavorite, isMetric, currentLocation, currentWeather, forecast } = props;
+    const { isFavorite, isMetric, currentLocation, currentWeather, locationForecast } = props;
     const units = isMetric ? '\u{2103}' : '\u{2109}';
 
-    if (currentLocation && currentWeather && forecast) {
+    if (currentLocation && currentWeather && locationForecast) {
         const { Temperature } = currentWeather;
 
         return (
@@ -31,17 +31,17 @@ const LocationDiplayCard = props => {
                 <div className="location__forecast">
                     <div className="forecast__headline">
                         <p>
-                            {forecast.Headline.Text}
+                            {locationForecast.Headline.Text}
                         </p>
                     </div>
-                    <ul className="forecast__daily">{forecast.DailyForecasts.map((dailyForecast, index) => {
+                    <ul className="forecast__daily">{locationForecast.DailyForecasts.map((dailyForecast, index) => {
                         const { Temperature } = dailyForecast;
                         const dateString = dailyForecast.Date.split('T');
                         const date = new Date(dateString[0]);
                         const { Minimum, Maximum } = Temperature;
-                        const tempRange = isMetric? 
-                            `${convertFahrenheitToCelcius(Minimum.Value)} - ${convertFahrenheitToCelcius(Maximum.Value)}` : 
-                            `${Minimum.Value} - ${Maximum.Value}`;
+                        // const tempRange = isMetric? 
+                        //     `${convertFahrenheitToCelcius(Minimum.Value)} - ${convertFahrenheitToCelcius(Maximum.Value)}` : 
+                        //     `${Minimum.Value} - ${Maximum.Value}`;
 
                         return (
                             <li className="daily" key={index}>
@@ -51,7 +51,7 @@ const LocationDiplayCard = props => {
                                 </div>
                                 <div className="daily__weather">
                                     <div className="weather__minmax">
-                                        {tempRange}{units}
+                                        {`${Minimum.Value} - ${Maximum.Value}`}{units}
                                     </div>
                                     <div className="weather__day">
                                         day icon

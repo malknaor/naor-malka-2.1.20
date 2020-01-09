@@ -9,7 +9,6 @@
     transition: .3s ease;
     box-shadow: var(--box-shadow);
     border: 1px solid var(--color-theme);
-
     
     &:hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -24,9 +23,9 @@
         margin: 1%;
         margin-bottom: 0;
         
-        // remove later
-        background-color: blue;
-        border-radius: 20px 20px 0 0;
+        // // remove later
+        // background-color: blue;
+        // border-radius: 20px 20px 0 0;
         
         .fav-icon {
             flex: 1;
@@ -46,9 +45,9 @@
                 align-self: center;
                 height: 100%;
 
-                // remove later
-                background-color: burlywood;
-                border-radius: 20px 0 0 0;
+                // // remove later
+                // background-color: burlywood;
+                // border-radius: 20px 0 0 0;
 
                 .city {
                     &__p {
@@ -95,7 +94,7 @@
         border-radius: 0 0 20px 20px;
 
         // remove later
-        background-color: cadetblue;
+        // background-color: cadetblue;
         
         &__headline {
             flex: 0.2
@@ -141,7 +140,7 @@
                     margin: 1%;
                     
                     // remove later
-                    background-color: chartreuse;
+                    // background-color: chartreuse;
 
                     &__date {
                         flex: 1;

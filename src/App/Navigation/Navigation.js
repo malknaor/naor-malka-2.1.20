@@ -4,17 +4,22 @@ import { Icon } from 'semantic-ui-react';
 
 import changeCurrentTheme from '../../services/theme';
 import ToggleButton from '../common/ToggleButton';
-import DropDownMenuContainer from '../common/DropDownMenuContainer';
+import DropDownMenuContainer from '../Containers/DropDownMenuContainer';
 import DropDownMenuItem from '../common/DropDownMenuItem';
 import './Navigation.scss';
 
 const Navigation = props => {
-    const { themeMode, changeTheme, changeMetric } = props;
+    const {
+        isDarkMode,
+        isMetric,
+        changeTheme,
+        changeMetric
+    } = props;
 
     return (
         <div className="navigation">
             <div className="navigation__title">
-                <Icon className={`navigation__title-icon${themeMode === 'light' ? '--sun sun' : '--moon moon'} icon`}>forecaster</Icon>
+                <Icon className={`navigation__title-icon${!isDarkMode ? '--sun sun' : '--moon moon'} icon`}>forecaster</Icon>
             </div>
             <div className="navigation__nav">
                 <ul className="navigation__nav-list">
@@ -33,13 +38,20 @@ const Navigation = props => {
             <div className="navigation__settings">
                 <DropDownMenuContainer iconName='cog'>
                     <DropDownMenuItem>
-                        <ToggleButton label="dark theme" onToggle={() => {
-                            changeTheme();
-                            changeCurrentTheme();
-                        }} />
+                        <ToggleButton
+                            defaultChecked={isDarkMode}
+                            label="dark theme" onToggle={() => {
+                                changeTheme();
+                                changeCurrentTheme();
+                            }}
+                        />
                     </DropDownMenuItem>
                     <DropDownMenuItem>
-                        <ToggleButton label="metric" onToggle={changeMetric} />
+                        <ToggleButton
+                            defaultChecked={isMetric}
+                            label="metric"
+                            onToggle={changeMetric}
+                        />
                     </DropDownMenuItem>
                 </DropDownMenuContainer>
             </div>

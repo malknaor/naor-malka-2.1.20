@@ -54,7 +54,7 @@ class HomeContainer extends Component {
     }
 
     componentDidMount() {
-        // appDataProvider.getGeoposition(this.onPositionReady, this.onPositionReady);
+        appDataProvider.getGeoposition(this.onPositionReady, this.onPositionReady);
     }
 
     render() {

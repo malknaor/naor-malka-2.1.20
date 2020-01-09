@@ -1,0 +1,17 @@
+.searchbar {
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    height: 98%;
+    width: 98%;
+    padding: 1%;
+
+    &__form {
+        flex: 1;
+        display:flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        max-width: 60%;
+    }
+}
