@@ -1,22 +1,23 @@
-import { SEARCH_AUTOCOMPLETE, SET_CURRENT_LOCATION, FETCH_CURRENT_WEATHER, FETCH_FORECAST_5D } from '../actions/actionTypes';
+import { 
+    SET_CURRENT_LOCATION,
+    SET_CURRENT_WEATHER, 
+    SET_LOCATION_FORECAST 
+} from '../actions/actionTypes';
 
 const forecastInitState = {
-    autoComplete: [],
     currentLocation: null,
     currentWeather: null,
-    forecast: null
+    locationForecast: null
 };
 
 const forecastReducer = (state = forecastInitState, action) => {
     switch (action.type) {
-        case SEARCH_AUTOCOMPLETE:
-            return { ...state, autoComplete: action.payload };
         case SET_CURRENT_LOCATION:
             return { ...state, currentLocation: action.payload };
-        case FETCH_CURRENT_WEATHER:
+        case SET_CURRENT_WEATHER:
             return { ...state, currentWeather: action.payload };
-        case FETCH_FORECAST_5D:
-            return { ...state, forecast: action.payload };
+        case SET_LOCATION_FORECAST:
+            return { ...state, locationForecast: action.payload };
         default:
             return state;
     }

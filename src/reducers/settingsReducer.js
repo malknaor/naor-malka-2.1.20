@@ -1,14 +1,14 @@
 import { CHANGE_THEME, CHANGE_UNITS } from '../actions/actionTypes';
 
 const initialThemeState = {
-    themeMode: 'light',
+    isDarkMode: false,
     isMetric: false
 };
 
 const settingsReducer = (state = initialThemeState, action) => {
     switch (action.type) {
         case CHANGE_THEME:
-            return { ...state, themeMode: state.themeMode === 'light'? 'dark' : 'light' };
+            return { ...state, isDarkMode: !state.isDarkMode };
         case CHANGE_UNITS:
             return { ...state, isMetric: !state.isMetric };
         default:
