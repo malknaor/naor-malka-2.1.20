@@ -9,6 +9,7 @@
 }
 
 body {
+    display: flex;
     min-height: 100vh;
     min-width: 100vw;
 }
@@ -16,20 +17,24 @@ body {
 :root {
     --color-theme: orangered;
     --color-theme-secondary: rgb(216, 216, 36);
-    --color-surface: rgb(230, 230, 230);
-    --color-secondary-surface: rgb(240, 240, 240);
+    --color-surface: rgb(200, 200, 200);
+    --color-secondary-surface: rgb(215, 215, 215);
+    --color-third-surface: rgb(230, 230, 230);
+    --color-fourth-surface: rgb(245, 245, 245);
     --color-solid: black;
     --color-primary: teal;
     --color-secondary: rgb(0, 184, 184);
     --color-card: rgb(222, 235, 235);
     --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-    --box-shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 0.4)
+    --box-shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
 #root {
     font-weight: 300;
     font-size: 16px;
     font-family: 'Lato', 'Ariel', sans-serif;
+    height: 100%;
+    width: 100%;
     min-height: 100%;
     min-width: 100%;
 }
@@ -38,26 +43,33 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
     background-color: var(--color-surface);
     color: var(--color-solid);
     height: 100%;
     width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+
 
     &__header{
         flex: 0.1;
         display: flex;
         flex-wrap: wrap;
-        height: calc(10vh);
-        width: 100%;
         background-color: var(--color-surface);
+        width: 100%;
+        min-height: 10%;
+        max-height: max-content;
     }
-
+    
     &__content{
         flex: 0.9;
         display: flex;
         flex-wrap: wrap;
-        height: calc(90vh);
         width: 100%;
-        background-color: var(--color-secondary-surface);
+        min-height: 90%;
+        max-height: max-content;
     }
 }

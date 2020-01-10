@@ -13,15 +13,15 @@ const SearchBar = props => {
         if (currentSearch && onSearchSubmit) {
             onSearchSubmit(currentSearch);
         }
-    }
+    };
 
     return (
         <div className="searchbar">
             <form className="searchbar__form" onSubmit={onFormSubmit}>
-                <AutoSuggenstionsInput onSearchChange={onSearchChange} />
+                <AutoSuggenstionsInput onSearchChange={onSearchChange} placeholder="Type tel a..."/>
             </form>
         </div>
     );
-}
+};
 
 export default SearchBar;

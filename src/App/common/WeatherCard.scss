@@ -1,0 +1,92 @@
+.weather-card {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  background-color: var(--color-fourth-surface);
+  color: var(--color-solid);
+  border-radius: 20px;
+  width: 98%;
+  height: auto;
+  padding: 1%;
+
+  &__day {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    height: fit-content;
+    padding-top: 4%;
+
+    .day {
+      flex: 1;
+      display: flex;
+      align-self: center;
+
+      &__day {
+        flex: 1;
+        font-size: calc(1rem + 1vw);
+        text-align: center;
+      }
+
+      &__date {
+        flex: 1;
+        font-size: calc(1rem + 0.5vw);
+        text-align: center;
+      }
+    }
+  }
+
+  &__temp {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    .temp {
+      flex: 1;
+      display: flex;
+      white-space: nowrap;
+
+      &__elem {
+        flex: 1;
+        font-size: calc(1rem + 0.1vw);
+        text-align: center;
+
+        &__text {
+          flex: 0.1;
+          margin: 0;
+          padding: 0;
+        }
+
+        &__icon {
+          flex: 0.9;
+          margin: 0;
+          padding: 0;
+          width: 50%;
+          height: 50%;
+        }
+      }
+
+      &__sep {
+        flex: 0.2;
+        display: flex;
+        align-content: center;
+        text-align: center;
+
+        .sep {
+
+            &__text {
+                flex: 1;
+                text-align: center;
+                font-size: calc(1rem + 0.1vw);
+                font-weight: bold;
+            }
+        }
+      }
+    }
+  }
+}

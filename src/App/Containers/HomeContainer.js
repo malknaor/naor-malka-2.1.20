@@ -13,16 +13,16 @@ import {
 class HomeContainer extends Component {
     onLocationReady = async location => {
         try {
-            const { 
-                isMetric, 
-                setCurrentLocation, 
-                setCurrentWeather, 
-                setLocationForecast 
+            const {
+                isMetric,
+                setCurrentLocation,
+                setCurrentWeather,
+                setLocationForecast
             } = this.props;
 
             const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric);
             const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric);
-            
+
             setCurrentLocation(location);
             setCurrentWeather(currentweather);
             setLocationForecast(locationForecast);
@@ -59,6 +59,7 @@ class HomeContainer extends Component {
 
     render() {
         const {
+            isMetric,
             currentLocation,
             currentWeather,
             locationForecast
@@ -66,6 +67,7 @@ class HomeContainer extends Component {
 
         return (
             <Home
+                isMetric={isMetric}
                 currentLocation={currentLocation}
                 currentWeather={currentWeather}
                 locationForecast={locationForecast}

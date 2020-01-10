@@ -15,8 +15,14 @@ const AutoSuggenstionsInput = props => {
         if (onSearchChange) {
             onSearchChange(newValue);
         }
-        
+
         setValue(newValue);
+    };
+
+    const renderInputComponent = inputProps => {
+        return (
+            <input style={{ padding: "0 5%", color: "var(--color-solid)" }} spellCheck="false" {...inputProps} />
+        );
     };
 
     const getSuggestionValue = suggestion => {
@@ -45,7 +51,8 @@ const AutoSuggenstionsInput = props => {
 
     const inputProps = {
         value: value,
-        onChange: onChange
+        onChange: onChange,
+        placeholder: props.placeholder
     };
 
     return (
@@ -55,6 +62,7 @@ const AutoSuggenstionsInput = props => {
             onSuggestionsClearRequested={onSuggestionsClearRequested}
             getSuggestionValue={getSuggestionValue}
             renderSuggestion={renderSuggestion}
+            renderInputComponent={renderInputComponent}
             inputProps={inputProps}
         />
     );
