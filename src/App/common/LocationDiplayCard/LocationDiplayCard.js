@@ -1,14 +1,13 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
-
 
 import WeatherCard from '../WeatherCard/WeatherCard';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import './LocationDiplayCard.scss';
 
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const LocationDiplayCard = props => {
-    const { isFavorite, isMetric, currentLocation, currentWeather, locationForecast } = props;
+    const { isMetric, currentLocation, currentWeather, locationForecast } = props;
     const units = isMetric ? '\u{2103}' : '\u{2109}';
 
     if (currentLocation && currentWeather && locationForecast) {
@@ -28,7 +27,7 @@ const LocationDiplayCard = props => {
                             <img className="temperature__icon" src={require(`../../../assets/images/${currentWeather.WeatherIcon}.png`)} />
                         </div>
                     </div>
-                    <Icon className={`fav-icon heart ${isFavorite ? '' : 'outline'} icon`}></Icon>
+                    <FavoriteButton location={currentLocation} />
                 </div>
                 <div className="location__forecast">
                     <div className="forecast__headline">
@@ -44,7 +43,7 @@ const LocationDiplayCard = props => {
 
                         return (
                             <li className="daily__item" key={index}>
-                                <WeatherCard 
+                                <WeatherCard
                                     day={weekDays[date.getDay()]}
                                     date={dateString[0]}
                                     minTemp={Minimum.Value}
