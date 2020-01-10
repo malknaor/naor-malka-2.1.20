@@ -1,11 +1,3 @@
-export const convertFahrenheitToCelcius = value => {
-    return Math.floor((value * 9/5) + 32);
-};
-
-export const convertCelciusToFahrenheit = value => {
-    return Math.floor((value - 32) * 5/9);
-};
-
 export const debounce = function (func, wait, immediate) {
     var timeout;
 

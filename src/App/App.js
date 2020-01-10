@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Navigation from './Navigation/Navigation';
 import HomeContainer from './Containers/HomeContainer';
-import asyncComponent from './common/AsyncComponent';
+import asyncComponent from './common/AsyncComponent/AsyncComponent';
 import './App.scss';
 
 const FavoritesContainer = asyncComponent(()=> import('./Favorites/FavoritesContainer').then(module => module.default));

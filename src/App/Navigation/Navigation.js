@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 
 import changeCurrentTheme from '../../services/theme';
-import ToggleButton from '../common/ToggleButton';
+import ToggleButton from '../common/ToggleButton/ToggleButton';
 import DropDownMenuContainer from '../Containers/DropDownMenuContainer';
-import DropDownMenuItem from '../common/DropDownMenuItem';
+import DropDownMenuItem from '../common/DropDownMenu/DropDownMenuItem';
 import './Navigation.scss';
 
 const Navigation = props => {

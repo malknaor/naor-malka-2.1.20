@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SearchBarContainer from '../Containers/SearchBarContainer';
-import LocationDiplayCard from '../common/LocationDiplayCard';
+import LocationDiplayCard from '../common/LocationDiplayCard/LocationDiplayCard';
 import './Home.scss';
 
 const Home = props => {

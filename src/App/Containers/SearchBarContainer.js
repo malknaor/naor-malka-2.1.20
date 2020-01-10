@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import SearchBar from '../common/SearchBar';
+import SearchBar from '../common/SearchBar/SearchBar';
 import appDataProvider from '../../appDataprovider';
 import {
     setCurrentSearch,

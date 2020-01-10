@@ -1,8 +1,8 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 
-import { convertFahrenheitToCelcius } from '../../utils';
-import WeatherCard from './WeatherCard';
+
+import WeatherCard from '../WeatherCard/WeatherCard';
 import './LocationDiplayCard.scss';
 
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -25,7 +25,7 @@ const LocationDiplayCard = props => {
                         <div className="city__description">{`${currentWeather.WeatherText}`}</div>
                         <div className="city__temperature">
                             <p className="temperature__text">{isMetric ? Temperature.Metric.Value : Temperature.Imperial.Value}{units}</p>
-                            <img className="temperature__icon" src={require(`../../assets/images/${currentWeather.WeatherIcon}.png`)} />
+                            <img className="temperature__icon" src={require(`../../../assets/images/${currentWeather.WeatherIcon}.png`)} />
                         </div>
                     </div>
                     <Icon className={`fav-icon heart ${isFavorite ? '' : 'outline'} icon`}></Icon>

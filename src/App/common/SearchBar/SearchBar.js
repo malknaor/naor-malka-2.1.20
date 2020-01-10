@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AutoSuggenstionsInput from './AutoSuggenstionsInput';
+import AutoSuggenstionsInput from '../AutoSuggestionsInput/AutoSuggenstionsInput';
 import './SearchBar.scss';
 
 const SearchBar = props => {
@@ -18,7 +18,7 @@ const SearchBar = props => {
     return (
         <div className="searchbar">
             <form className="searchbar__form" onSubmit={onFormSubmit}>
-                <AutoSuggenstionsInput onSearchChange={onSearchChange} placeholder="Type tel a..."/>
+                <AutoSuggenstionsInput onSearchChange={onSearchChange} placeholder="Search Location..."/>
             </form>
         </div>
     );

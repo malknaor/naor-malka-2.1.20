@@ -14,14 +14,14 @@ const WeatherCard = props => {
             <div className="weather-card__temp">
                 <div className="temp__elem">
                     <p className="elem__text">{`${minTemp}${units}`}</p>
-                    <img className="elem__icon" src={require(`../../assets/images/${dayIcon}.png`)} />
+                    <img className="elem__icon" alt="icon" src={require(`../../../assets/images/${dayIcon}.png`)} />
                 </div>
                 <div className="temp__sep">
                     <p className="sep__text">{'\t-\t'}</p>
                 </div>
                 <div className="temp__elem">
                     <p className="elem__text">{`${maxTemp}${units}`}</p>
-                    <img className="elem__icon" src={require(`../../assets/images/${nightIcon}.png`)} />
+                    <img className="elem__icon" alt="icon" src={require(`../../../assets/images/${nightIcon}.png`)} />
                 </div>
             </div>
         </div>

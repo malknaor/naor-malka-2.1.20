@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
 
-import appDataprovider from '../../appDataprovider';
-import { debounce } from '../../utils';
+import appDataprovider from '../../../appDataprovider';
+import { debounce } from '../../../utils';
 import './AutoSuggenstionsInput.scss';
 
 const AutoSuggenstionsInput = props => {

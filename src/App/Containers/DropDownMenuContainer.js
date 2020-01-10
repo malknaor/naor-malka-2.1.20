@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { changeTheme, changeMetric } from '../../actions';
-import DropDownMenu from '../common/DropDownMenu';
+import DropDownMenu from '../common/DropDownMenu/DropDownMenu';
 
 const DropDownMenuContainer = props => {
     const { settings, changeTheme, changeMetric, iconName } = props;

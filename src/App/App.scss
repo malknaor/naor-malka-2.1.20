@@ -12,6 +12,10 @@ body {
     display: flex;
     min-height: 100vh;
     min-width: 100vw;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 :root {
@@ -48,28 +52,26 @@ body {
     align-items: stretch;
     background-color: var(--color-surface);
     color: var(--color-solid);
-    height: 100%;
     width: 100%;
+    min-width: fit-content;
     min-height: 100%;
-    min-width: 100%;
-
 
     &__header{
-        flex: 0.1;
+        flex: 0.2;
         display: flex;
         flex-wrap: wrap;
         background-color: var(--color-surface);
         width: 100%;
-        min-height: 10%;
-        max-height: max-content;
+        min-height: 100%;
+        min-width: fit-content;
     }
     
     &__content{
-        flex: 0.9;
+        flex: 0.8;
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        min-height: 90%;
-        max-height: max-content;
+        min-height: 100%;
+        min-width: fit-content;
     }
 }
