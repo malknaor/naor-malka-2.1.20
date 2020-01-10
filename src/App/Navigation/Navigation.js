@@ -6,6 +6,7 @@ import changeCurrentTheme from '../../services/theme';
 import ToggleButton from '../common/ToggleButton/ToggleButton';
 import DropDownMenuContainer from '../Containers/DropDownMenuContainer';
 import DropDownMenuItem from '../common/DropDownMenu/DropDownMenuItem';
+import localStorage from '../../services/localStorage';
 import './Navigation.scss';
 
 const Navigation = props => {
@@ -43,6 +44,7 @@ const Navigation = props => {
                             label="dark theme" onToggle={() => {
                                 changeTheme();
                                 changeCurrentTheme();
+                                localStorage.setIsDarkMode(!isDarkMode);
                             }}
                         />
                     </DropDownMenuItem>
@@ -50,7 +52,10 @@ const Navigation = props => {
                         <ToggleButton
                             defaultChecked={isMetric}
                             label="metric"
-                            onToggle={changeMetric}
+                            onToggle={() => {
+                                localStorage.setIsMetric(!isMetric);
+                                changeMetric()
+                            }}
                         />
                     </DropDownMenuItem>
                 </DropDownMenuContainer>
