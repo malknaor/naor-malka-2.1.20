@@ -1,0 +1,72 @@
+.current-weather {
+  flex: 1;
+  display: flex;
+  flex: wrap;
+
+  &__city {
+    flex: 0.7;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+
+    .city {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+
+      &__p {
+        flex: 0.25;
+        margin: 0;
+        font-size: calc(1.2rem + 0.1vw);
+        text-align: center;
+      }
+
+      &__title {
+        flex: 0.25;
+        font-size: calc(1.5rem + 0.1vw);
+        font-family: "sans-serif";
+        text-align: center;
+      }
+
+      &__description {
+        flex: 0.25;
+        font-size: calc(1.2rem + 0.1vw);
+        text-align: center;
+      }
+
+      &__temperature {
+        flex: 0.25;
+        align-self: center;
+
+        .temperature {
+          flex: 1;
+          display: flex;
+          border: 1px solid yellow;
+
+          &__text {
+            flex: 0.3;
+            font-size: calc(1.2rem + 0.1vw);
+            text-align: center;
+          }
+
+          &__icon {
+            flex: 0.7;
+          }
+        }
+      }
+    }
+  }
+
+  &__fav {
+      flex: 0.3;
+      display: flex;
+
+    .fav-icon {
+        flex: 1;
+        align-self: center;
+        font-size: calc(2rem + 1vw);
+        color: red;
+    }
+  }
+}
