@@ -23,69 +23,59 @@
   &__current {
     flex: 0.3;
     display: flex;
-    flex: wrap;
-
-    height: 98%;
-    width: 98%;
+    justify-content: space-around;
     margin: 1%;
     margin-bottom: 0;
 
     .fav-icon {
-      flex: 1;
       align-self: center;
-      font-size: 2rem;
+      font-size: calc(2rem + 1vw);
       color: red;
     }
 
     .current-weather {
       &__city {
-        flex: 1.5;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         align-self: center;
-        height: auto;
 
         .city {
-            flex: 1;
             display: flex;
             flex-wrap: wrap;
+
           &__p {
-            flex: 0.25;
             margin: 0;
-            font-size: 1rem;
+            font-size: calc(1.2rem + .1vw);
             text-align: center;
           }
 
           &__title {
-            flex: 0.25;
-            font-size: 1.3rem;
+            font-size: calc(1.5rem + .1vw);
             font-family: "sans-serif";
             text-align: center;
           }
 
           &__description {
-            flex: 0.25;
-            font-size: 1rem;
+            font-size: calc(1.2rem + .1vw);
             text-align: center;
           }
 
           &__temperature {
-            flex: 0.25;
-            font-size: 1rem;
             align-self: center;
 
             .temperature {
-              flex: 1;
               display: flex;
 
               &__text {
-                flex: 0.1;
+                align-self: center;
+                font-size: calc(1.2rem + .1vw);
                 text-align: center;
+                line-height: 27px;
+                margin: 0;
               }
 
               &__icon {
-                flex: 0.9;
               }
             }
           }

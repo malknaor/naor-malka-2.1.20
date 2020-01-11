@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Icon } from 'semantic-ui-react';
 
-import localStorage from '../../../services/localStorage';
+import localStorage from '../../../services/localStorageService';
 
 const FavoriteButton = ({ location }) => {
     const [isFav, setIsFav] = useState(localStorage.isLocationFavorite(location.Key));
@@ -10,7 +10,7 @@ const FavoriteButton = ({ location }) => {
         localStorage.isLocationFavorite(location.Key) ?
             localStorage.removeFromFavorites(location.Key)
             :
-            localStorage.addToFavorites({ Key: location.Key, LocalizedName: location.LocalizedName });
+            localStorage.addToFavorites(location);
 
             setIsFav(!isFav);
     };

@@ -28,6 +28,7 @@ class HomeContainer extends Component {
             setLocationForecast(locationForecast);
         } catch (error) {
             alert(error);
+            this.onPositionError();
         }
     }
 
@@ -54,7 +55,9 @@ class HomeContainer extends Component {
     }
 
     componentDidMount() {
-        appDataProvider.getGeoposition(this.onPositionReady, this.onPositionReady);
+        if (!this.props.currentLocation) {
+            appDataProvider.getGeoposition(this.onPositionReady, this.onPositionError);
+        }
     }
 
     render() {

@@ -2,7 +2,14 @@ import { accuWeather, accuWeatherRoutes } from '../api/accuWeather';
 
 const appDataPriveder = (() => {
     const getGeoposition = (onSuccess, onError) => {
-        window.navigator.geolocation && window.navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        if (!window.navigator.geolocation) {
+            throw new Error(`
+                Geolocation is disabled. 
+                loading default location
+            `);
+        }
+
+        window.navigator.geolocation.getCurrentPosition(onSuccess, onError);
     };
 
     const getSearchSuggestions = searchValue => {

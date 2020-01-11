@@ -1,9 +1,9 @@
 import { CHANGE_THEME, CHANGE_UNITS } from '../actions/actionTypes';
 
-import localStorage from '../services/localStorage';
+import localStorageService from '../services/localStorageService';
 const initialThemeState = {
-    isDarkMode: localStorage.getIsDarkMode(),
-    isMetric: localStorage.getIsMetric()
+    isDarkMode: localStorageService.getIsDarkMode(),
+    isMetric: localStorageService.getIsMetric()
 };
 
 const settingsReducer = (state = initialThemeState, action) => {

@@ -19,7 +19,8 @@
         align-self: center;
         padding: 1%;
         padding-bottom: 0;
-        width: 50%;
+        min-width: 50%;
+        width: auto;
     }
     
     &__content{

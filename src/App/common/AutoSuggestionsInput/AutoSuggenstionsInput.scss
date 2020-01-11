@@ -9,19 +9,20 @@
     
     &--open {
         flex: 1;
-        display:block; 
-        width: 100%;
+        display:block;
+        width: 100%; 
     }
 
     .react-autosuggest__input {
         flex: 1;
         display: flex;
         font-size: calc(1rem + 0.1vw);
-        border-radius: 5px;
         padding: 0 1%;
         background-color: var(--color-surface);
         box-shadow: var(--box-shadow);
         width: 100%;
+        height: 30px;
+        border-radius: 20px;
         
         &:hover {
             box-shadow: var(--box-shadow-hover);
@@ -47,7 +48,6 @@
         background-color: var(--color-surface);
         border: 1px solid silver;
         border-radius: 5px;
-
         width: max-content;
         
         &--open {
@@ -61,12 +61,12 @@
             display: flex;
             list-style: none;
             text-align: start;
-            width: max-content;
+            width: fit-content;
             
             .react-autosuggest__suggestion {
                 text-align: start;
                 cursor: pointer;
-                padding: 2% 10%;
+                padding: 10%;
                 white-space: nowrap;
                 font-size: calc(1rem + 0.1vw);
                 color: var(--color-solid);

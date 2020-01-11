@@ -1,4 +1,4 @@
-import localStorage from '../services/localStorage';
+import localStorageService from './localStorageService';
 
 const themeChanger = (() => {
     let currentTheme = 'light';
@@ -40,7 +40,7 @@ const themeChanger = (() => {
         Object.entries(theme).forEach(([key, value]) => document.documentElement.style.setProperty(key, value));
     }
 
-    if (localStorage.getIsDarkMode) {
+    if (localStorageService.getIsDarkMode()) {
         changeTheme();
     }
 
