@@ -11,47 +11,65 @@ import {
 } from '../../actions';
 
 class HomeContainer extends Component {
+    state = { hasError: false, errorDetails: null }
+
     onLocationReady = async location => {
-        try {
-            const {
-                isMetric,
-                setCurrentLocation,
-                setCurrentWeather,
-                setLocationForecast
-            } = this.props;
+        const {
+            isMetric,
+            setCurrentLocation,
+            setCurrentWeather,
+            setLocationForecast
+        } = this.props;
 
-            const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric);
-            const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric);
+        const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric)
+            .catch(err => {
+                this.setState({ hasError: true, errorDetails: err.response.data })
+            });
 
-            setCurrentLocation(location);
-            setCurrentWeather(currentweather);
-            setLocationForecast(locationForecast);
-        } catch (error) {
-            alert(error);
-            this.onPositionError();
+        if (this.state.hasError) {
+            return;
         }
+
+        const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric)
+            .catch(err => {
+                this.setState({ hasError: true, errorDetails: err.response.data })
+            });
+
+        if (this.state.hasError) {
+            return;
+        }
+
+        setCurrentLocation(location);
+        setCurrentWeather(currentweather);
+        setLocationForecast(locationForecast);
     }
 
     onPositionReady = async ({ coords }) => {
-        try {
-            const { latitude, longitude } = coords;
-            const location = await appDataProvider.getLocationGeoposition(latitude, longitude);
-
-            this.onLocationReady(location);
-        } catch (error) {
-            alert(error);
+        const { latitude, longitude } = coords;
+        const location = await appDataProvider.getLocationGeoposition(latitude, longitude)
+            .catch(err => {
+                this.setState({ hasError: true, errorDetails: err.response.data })
+            });
+        
+        if (this.state.hasError) {
+            return;
         }
+
+        this.onLocationReady(location);
     }
 
     onPositionError = async () => {
-        try {
-            const defaultCity = 'tel aviv';
-            const location = await appDataProvider.getLocation(defaultCity);
+        const defaultCity = 'tel aviv';
+        const location = await appDataProvider.getLocation(defaultCity)
+            .catch(err => {
+                this.setState({ hasError: true, errorDetails: err.response.data })
+            });
 
-            this.onLocationReady(location);
-        } catch (error) {
-            alert(error);
+        if (this.state.hasError) {
+            return;
         }
+
+        this.onLocationReady(location);
     }
 
     componentDidMount() {
@@ -61,6 +79,10 @@ class HomeContainer extends Component {
     }
 
     render() {
+        if (this.state.hasError) {
+            throw this.state.errorDetails;
+        }
+
         const {
             isMetric,
             currentLocation,
@@ -80,8 +102,6 @@ class HomeContainer extends Component {
 }
 
 const mapStateToProps = ({ settings, forecast }) => {
-
-
     return {
         isMetric: settings.isMetric,
         currentLocation: forecast.currentLocation,

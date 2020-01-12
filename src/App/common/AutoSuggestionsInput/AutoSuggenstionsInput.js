@@ -42,7 +42,7 @@ const AutoSuggenstionsInput = props => {
             .then(({ data }) => {
                 setSuggestions(data);
             })
-            .catch(error => alert(error));
+            .catch(error => { throw error.response.data });
     }, 500);
 
     const onSuggestionsClearRequested = async () => {

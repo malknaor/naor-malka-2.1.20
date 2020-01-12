@@ -19,55 +19,55 @@ const appDataPriveder = (() => {
                 apikey: process.env.REACT_APP_API_KEY,
                 q: searchValue
             }
-        }).catch(error => { throw error });
+        });
     };
 
     const getLocation = async (location) => {
         const { LOCATION_KEY } = accuWeatherRoutes;
-        const { data } = await accuWeather.get(`${LOCATION_KEY}`, {
+        const response = await accuWeather.get(`${LOCATION_KEY}`, {
             params: {
                 apikey: process.env.REACT_APP_API_KEY,
                 q: location
             }
-        }).catch(error => { throw error });
+        }).then(res => res.data[0]);
 
-        return data[0];
+        return response;
     };
 
     const getLocationGeoposition = async (latitude, longitude) => {
         const { GEOPOSITION_SEARCH } = accuWeatherRoutes;
-        const { data } = await accuWeather.get(GEOPOSITION_SEARCH, {
+        const response = await accuWeather.get(GEOPOSITION_SEARCH, {
             params: {
                 apikey: process.env.REACT_APP_API_KEY,
                 q: `${latitude},${longitude}`
             }
-        }).catch(error => { throw error });
+        }).then(res => res.data);
 
-        return data;
+        return response;
     };
 
     const getCurrentWeather = async (locationKey, isMetric) => {
         const { CURRENT_WEATHER } = accuWeatherRoutes;
-        const { data } = await accuWeather.get(`${CURRENT_WEATHER}${locationKey}`, {
+        const response = await accuWeather.get(`${CURRENT_WEATHER}${locationKey}`, {
             params: {
                 apikey: process.env.REACT_APP_API_KEY,
                 metric: isMetric
             }
-        }).catch(error => { throw error });
+        }).then(res => res.data[0]);
 
-        return data[0];
+        return response;
     };
 
     const getLocationForecast = async (locationKey, isMetric) => {
         const { LOCATION_FORECAST } = accuWeatherRoutes;
-        const { data } = await accuWeather.get(`${LOCATION_FORECAST}${locationKey}`, {
+        const response = await accuWeather.get(`${LOCATION_FORECAST}${locationKey}`, {
             params: {
                 apikey: process.env.REACT_APP_API_KEY,
                 metric: isMetric
             }
-        }).catch(error => { throw error });
+        }).then(res => res.data);
 
-        return data;
+        return response;
     };
 
     return {

@@ -19,19 +19,15 @@ const AppContainer = props => {
     } = props;
 
     const onUnitsChange = async () => {
-        try {
-            const {
-                isMetric,
-                currentLocation,
-                setLocationForecast
-            } = props;
+        const {
+            isMetric,
+            currentLocation,
+            setLocationForecast
+        } = props;
 
-            const locationForecast = await appDataProvider.getLocationForecast(currentLocation.Key, !isMetric);
+        const locationForecast = await appDataProvider.getLocationForecast(currentLocation.Key, !isMetric);
 
-            setLocationForecast(locationForecast);
-        } catch (error) {
-            alert(error);
-        }
+        setLocationForecast(locationForecast);
     };
 
     return (

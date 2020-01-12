@@ -15,38 +15,34 @@ const SearchBarContainer = props => {
     const { currentSearch, setCurrentSearch } = props;
 
     const onSearchSubmit = async locationName => {
-        try {
-            const { 
-                isMetric, 
-                setCurrentLocation, 
-                setCurrentWeather, 
-                setLocationForecast 
-            } = props;
+        const {
+            isMetric,
+            setCurrentLocation,
+            setCurrentWeather,
+            setLocationForecast
+        } = props;
 
-            const location = await appDataProvider.getLocation(locationName);
-            const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric);
-            const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric);
-            
-            setCurrentLocation(location);
-            setCurrentWeather(currentweather);
-            setLocationForecast(locationForecast);
-        } catch (error) {
-            alert(error);
-        }
+        const location = await appDataProvider.getLocation(locationName);
+        const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric);
+        const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric);
+
+        setCurrentLocation(location);
+        setCurrentWeather(currentweather);
+        setLocationForecast(locationForecast);
     };
 
     return (
-        <SearchBar 
-            currentSearch={currentSearch} 
-            onSearchSubmit={onSearchSubmit} 
-            onSearchChange={setCurrentSearch} 
+        <SearchBar
+            currentSearch={currentSearch}
+            onSearchSubmit={onSearchSubmit}
+            onSearchChange={setCurrentSearch}
         />
     );
 };
 
 const mapStateToProps = ({ settings, search }) => {
     return {
-        isMetric: settings.isMetric, 
+        isMetric: settings.isMetric,
         currentSearch: search.currentSearch,
         suggestions: search.suggestions
     };
