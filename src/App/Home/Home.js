@@ -1,29 +1,17 @@
 import React from 'react';
 
 import SearchBarContainer from '../Containers/SearchBarContainer';
-import LocationDiplayCard from '../common/LocationDiplayCard/LocationDiplayCard';
+import LocationDisplayCardContainer from '../Containers/LocationDisplayCardContainer';
 import './Home.scss';
 
 const Home = props => {
-    const { 
-        isMetric, 
-        currentLocation, 
-        currentWeather, 
-        locationForecast 
-    } = props;
-
     return (
         <div className="home-container">
             <div className="home-container__Search">
                 <SearchBarContainer />
             </div>
             <div className="home-container__content">
-                <LocationDiplayCard 
-                    isMetric={isMetric} 
-                    currentLocation={currentLocation} 
-                    currentWeather={currentWeather} 
-                    locationForecast={locationForecast} 
-                />
+                <LocationDisplayCardContainer /> 
             </div>
         </div>
     );

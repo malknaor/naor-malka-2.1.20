@@ -35,13 +35,11 @@ class HomeContainer extends Component {
                 this.setState({ hasError: true, errorDetails: err.response.data })
             });
 
-        if (this.state.hasError) {
-            return;
+        if (!this.state.hasError) {
+            setCurrentLocation(location);
+            setCurrentWeather(currentweather);
+            setLocationForecast(locationForecast);
         }
-
-        setCurrentLocation(location);
-        setCurrentWeather(currentweather);
-        setLocationForecast(locationForecast);
     }
 
     onPositionReady = async ({ coords }) => {
@@ -50,12 +48,10 @@ class HomeContainer extends Component {
             .catch(err => {
                 this.setState({ hasError: true, errorDetails: err.response.data })
             });
-        
-        if (this.state.hasError) {
-            return;
-        }
 
-        this.onLocationReady(location);
+        if (!this.state.hasError) {
+            this.onLocationReady(location);
+        }
     }
 
     onPositionError = async () => {
@@ -65,11 +61,9 @@ class HomeContainer extends Component {
                 this.setState({ hasError: true, errorDetails: err.response.data })
             });
 
-        if (this.state.hasError) {
-            return;
+        if (!this.state.hasError) {
+            this.onLocationReady(location);
         }
-
-        this.onLocationReady(location);
     }
 
     componentDidMount() {
@@ -83,20 +77,8 @@ class HomeContainer extends Component {
             throw this.state.errorDetails;
         }
 
-        const {
-            isMetric,
-            currentLocation,
-            currentWeather,
-            locationForecast
-        } = this.props;
-
         return (
-            <Home
-                isMetric={isMetric}
-                currentLocation={currentLocation}
-                currentWeather={currentWeather}
-                locationForecast={locationForecast}
-            />
+            <Home />
         );
     }
 }
@@ -104,9 +86,7 @@ class HomeContainer extends Component {
 const mapStateToProps = ({ settings, forecast }) => {
     return {
         isMetric: settings.isMetric,
-        currentLocation: forecast.currentLocation,
-        currentWeather: forecast.currentWeather,
-        locationForecast: forecast.locationForecast,
+        currentLocation: forecast.currentLocation
     };
 };
 

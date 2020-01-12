@@ -7,7 +7,14 @@ import './LocationDiplayCard.scss';
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const LocationDiplayCard = props => {
-    const { isMetric, currentLocation, currentWeather, locationForecast } = props;
+    const { 
+        isMetric, 
+        currentLocation, 
+        currentWeather, 
+        locationForecast,
+        addToFavorites, 
+        removeFromFavorites 
+    } = props;
     const units = isMetric ? '\u{2103}' : '\u{2109}';
 
     if (currentLocation && currentWeather && locationForecast) {
@@ -27,7 +34,7 @@ const LocationDiplayCard = props => {
                             <img className="temperature__icon" alt="temp_icon" src={require(`../../../assets/images/${currentWeather.WeatherIcon}.png`)} />
                         </div>
                     </div>
-                    <FavoriteButton location={currentLocation} />
+                    <FavoriteButton location={currentLocation} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} />
                 </div>
                 <div className="location__forecast">
                     <div className="forecast__headline">
