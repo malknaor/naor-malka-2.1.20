@@ -28,7 +28,7 @@ export const setCurrentWeather = currentWeather => {
 };
 
 export const setLocationForecast = locationForecast => {
-        return { type: actionTypes.SET_LOCATION_FORECAST, payload: locationForecast };
+    return { type: actionTypes.SET_LOCATION_FORECAST, payload: locationForecast };
 };
 
 /***** FAVORITES ACTIONS ******/

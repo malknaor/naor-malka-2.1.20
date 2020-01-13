@@ -1,18 +1,32 @@
-.current-weather {
-  flex: 1;
+.favorite {
   display: flex;
   flex: wrap;
+  justify-content: center;
+  align-self: flex-start;
+  background-color: var(--color-third-surface);
+  color: var(--color-solid);
+  border: 1px solid var(--color-theme);
+  border-radius: 20px;
+  width: fit-content;
+  transition: .3s ease;
+  box-shadow: var(--box-shadow);
 
-  &__city {
+  &:hover {
+    box-shadow: var(--box-shadow-hover);
+  }
+
+  &__location {
     flex: 0.7;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    align-self: center;
+    white-space: nowrap;
+    padding: 4%;
 
-    .city {
+    .location {
       flex: 1;
       display: flex;
+      align-self: center;
       flex-wrap: wrap;
 
       &__p {
@@ -31,42 +45,33 @@
 
       &__description {
         flex: 0.25;
+        margin: 0;
         font-size: calc(1.2rem + 0.1vw);
         text-align: center;
       }
 
-      &__temperature {
-        flex: 0.25;
+      &__icon {
+        flex: 0.7;
+        margin: 0;
         align-self: center;
-
-        .temperature {
-          flex: 1;
-          display: flex;
-          border: 1px solid yellow;
-
-          &__text {
-            flex: 0.3;
-            font-size: calc(1.2rem + 0.1vw);
-            text-align: center;
-          }
-
-          &__icon {
-            flex: 0.7;
-          }
-        }
+        width: min-content;
       }
     }
   }
 
-  &__fav {
-      flex: 0.3;
-      display: flex;
-
-    .fav-icon {
-        flex: 1;
-        align-self: center;
-        font-size: calc(2rem + 1vw);
-        color: red;
+  .fav-icon {
+    flex: 0.3;
+    display: flex;
+    font-size: calc(2rem + 1vw);
+    align-self: center;
+    color: red;
+    border-bottom: 1px solid transparent;
+    border-radius: 50%; 
+    transition: .3s ease;
+    padding-top: 3%;
+    
+    &:hover {
+      border-bottom: 1px solid red;
     }
   }
 }

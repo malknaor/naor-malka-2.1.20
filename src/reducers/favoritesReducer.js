@@ -1,4 +1,4 @@
-import { ADD_TO_FAVROITES, REMOVE_FROM_FAVROITES, SET_FAVORITES } from '../actions/actionTypes';
+import { SET_FAVORITES, ADD_TO_FAVROITES, REMOVE_FROM_FAVROITES } from '../actions/actionTypes';
 import LocalStorageService from '../services/localStorageService';
 
 const mapFavorites = LocalStorageService.getFavorites().map(location => {
@@ -19,7 +19,7 @@ const favoritesReducer = (state = favoritesInitState, action) => {
         case ADD_TO_FAVROITES:
             return { favorites: [...state.favorites, { location: action.payload, weather: null }] };
         case REMOVE_FROM_FAVROITES:
-            return { favorites: state.favorites.map(favorite => favorite.location.Key !== action.payload.Key) };
+            return { favorites: state.favorites.filter(favorite => favorite.location.Key !== action.payload.Key) };
         default:
             return state;
     }

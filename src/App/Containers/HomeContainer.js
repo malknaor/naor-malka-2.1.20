@@ -21,7 +21,7 @@ class HomeContainer extends Component {
             setLocationForecast
         } = this.props;
 
-        const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric)
+        const currentWeather = await appDataProvider.getCurrentWeather(location.Key, isMetric)
             .catch(err => {
                 this.setState({ hasError: true, errorDetails: err.response.data })
             });
@@ -37,7 +37,7 @@ class HomeContainer extends Component {
 
         if (!this.state.hasError) {
             setCurrentLocation(location);
-            setCurrentWeather(currentweather);
+            setCurrentWeather(currentWeather);
             setLocationForecast(locationForecast);
         }
     }

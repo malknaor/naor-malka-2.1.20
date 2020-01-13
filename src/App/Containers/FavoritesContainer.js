@@ -5,42 +5,68 @@ import { bindActionCreators } from 'redux';
 import LocalStorageService from '../../services/localStorageService';
 import appDataPriveder from '../../appDataprovider';
 import Favorites from '../Favorites/Favorites';
-import { setFavorites, addToFavorites, removeFromFavorites } from '../../actions';
+import { setFavorites, removeFromFavorites } from '../../actions';
 
 class FavoritesContainer extends Component {
-    getFavoritesCurrnetWeather = () => {
-        // const { favorites, setFavorites } = this.props;
+    getFavoritesCurrnetWeather = async () => {
+        const { favorites, setFavorites } = this.props;
+        const newFavorites = [];
 
-        // favorites.forEach(async favorite => {
-        //     if (!favorite.weather) {
-        //         favorite.weather = await appDataPriveder.getCurrentWeather(favorite.location.Key);
-        //     }
-        // });
+        Promise.all(
+            favorites.map(async favorite => {
+                if (!favorite.weather) {
+                    const weather = await appDataPriveder.getCurrentWeather(favorite.location.Key);
 
-        // setFavorites(favorites);
+                    newFavorites.push({ location: favorite.location, weather });
+                } else {
+                    newFavorites.push({ location: favorite.location, weather: favorite.weather });
+                }
+            })
+        ).then(() => {
+            if (newFavorites.length > 0) {
+                setFavorites(newFavorites);
+            }
+        });
     }
 
     removeFromFavorites = locationToRemove => {
-        // const { removeFromFavorites } = this.props;
+        const { removeFromFavorites } = this.props;
 
-        // LocalStorageService.removeFromFavorites(locationToRemove.Key);
-        // removeFromFavorites(locationToRemove);
+        LocalStorageService.removeFromFavorites(locationToRemove.Key);
+        removeFromFavorites(locationToRemove);
+    }
+
+    updateFavoriteWeather = (location, weather) => {
+        const { updateFavoriteCurrentWeather } = this.props;
+
+        updateFavoriteCurrentWeather(location, weather);
+    }
+
+    componentDidMount() {
+        const { favorites } = this.props;
+        
+        if (favorites.length > 0) {
+            this.getFavoritesCurrnetWeather();
+        }
     }
 
     render() {
-        const { favorites, removeFromFavorites } = this.props;
+        const { isMetric, favorites } = this.props;
 
         return (
             <Favorites
+                isMetric={isMetric}
                 favorites={favorites}
-                removeFromFavorites={removeFromFavorites}
+                removeFavorite={this.removeFromFavorites}
+                updateFavoriteWeather={this.updateFavoriteWeather}
             />
         );
     }
 }
 
-const mapStateToProps = ({ favorites }) => {
+const mapStateToProps = ({ favorites, settings }) => {
     return {
+        isMetric: settings.isMetric,
         favorites: favorites.favorites
     };
 };

@@ -6,7 +6,7 @@ import HomeContainer from './Containers/HomeContainer';
 import asyncComponent from './common/AsyncComponent/AsyncComponent';
 import './App.scss';
 
-const FavoritesContainer = asyncComponent(() => import('./Favorites/FavoritesContainer').then(module => module.default));
+const FavoritesContainer = asyncComponent(() => import('./Containers/FavoritesContainer').then(module => module.default));
 
 const App = props => {
     const {

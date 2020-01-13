@@ -14,7 +14,6 @@ class ErrorBoundary extends Component {
 
     render() {
         if (this.state.hasError) {
-            debugger
             return (
                 <Modal open={true}>
                     <Modal.Header>

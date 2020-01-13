@@ -34,7 +34,7 @@ const LocationDiplayCard = props => {
                             <img className="temperature__icon" alt="temp_icon" src={require(`../../../assets/images/${currentWeather.WeatherIcon}.png`)} />
                         </div>
                     </div>
-                    <FavoriteButton location={currentLocation} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} />
+                    <FavoriteButton location={currentLocation} addToFavorites={addToFavorites} removeFavorite={removeFromFavorites} />
                 </div>
                 <div className="location__forecast">
                     <div className="forecast__headline">
