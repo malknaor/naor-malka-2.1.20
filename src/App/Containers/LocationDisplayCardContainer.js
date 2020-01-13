@@ -8,6 +8,7 @@ import { addToFavorites, removeFromFavorites } from '../../actions';
 
 const LocationDisplayCardContainer = props => {
     const {
+        isMetric,
         currentLocation,
         currentWeather,
         locationForecast
@@ -29,6 +30,7 @@ const LocationDisplayCardContainer = props => {
 
     return (
         <LocationDiplayCard
+            isMetric={isMetric}
             addToFavorites={addToFavorites}
             removeFromFavorites={removeFromFavorites}
             currentLocation={currentLocation}
@@ -38,8 +40,9 @@ const LocationDisplayCardContainer = props => {
     );
 };
 
-const mapStateToProps = ({ forecast, favorites }) => {
+const mapStateToProps = ({ settings, forecast, favorites }) => {
     return {
+        isMetric: settings.isMetric,
         currentLocation: forecast.currentLocation,
         currentWeather: forecast.currentWeather,
         locationForecast: forecast.locationForecast,

@@ -49,10 +49,12 @@
         border: 1px solid silver;
         border-radius: 5px;
         width: fit-content;
+        visibility: hidden;
         
         &--open {
             position: fixed;
             width: fit-content;
+            visibility: visible;
         }
         
         .react-autosuggest__suggestions-list {

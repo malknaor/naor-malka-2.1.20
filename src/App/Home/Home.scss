@@ -1,13 +1,16 @@
 .home-container {
-    flex: 1;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: stretch;
-    align-content: stretch;
-    align-items: stretch;
+    justify-content: center;
     width: 100%;
     background-color: var(--color-secondary-surface);
+    min-height: fit-content;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
     
     &__Search{
         flex: 0.1;

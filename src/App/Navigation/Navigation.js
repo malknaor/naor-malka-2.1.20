@@ -51,7 +51,7 @@ const Navigation = props => {
                     <DropDownMenuItem>
                         <ToggleButton
                             defaultChecked={isMetric}
-                            label="metric"
+                            label={"\u{2109} / \u{2103}"}
                             onToggle={() => {
                                 localStorageService.setIsMetric(!isMetric);
                                 changeMetric()

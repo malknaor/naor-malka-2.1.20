@@ -2,13 +2,18 @@
     flex: 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 2%;
-    background-color: var(--color-secondary-surface);
+    justify-content: space-around;
+    align-items: stretch;
     width: 100%;
+    background-color: var(--color-secondary-surface);
+    min-height: 90%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &__no-favorites {
-        flex: 1;
         align-self: center;
         font-size: calc(1rem + 2vw);
         color: var(--color-solid);

@@ -10,6 +10,12 @@
   width: fit-content;
   transition: .3s ease;
   box-shadow: var(--box-shadow);
+  margin: 1%;
+  overflow-y: auto;
+    
+  &::-webkit-scrollbar {
+      display: none;
+  }
 
   &:hover {
     box-shadow: var(--box-shadow-hover);
