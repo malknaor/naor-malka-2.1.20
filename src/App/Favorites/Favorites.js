@@ -11,7 +11,7 @@ const Favorites = props => {
             return favorites.map(favorite => {
                 return (
                     <CurrentWeatherCard
-                        key={favorite.Key}
+                        key={favorite.location.Key}
                         isMetric={isMetric}
                         location={favorite.location}
                         currentWeather={favorite.weather}
