@@ -2,6 +2,11 @@
 forecaster is a weather app based on accu weather api
 
 ## Features
+* current location based on user geolocation 
+* search autocomplete
+* favorites saved in local storage
+* light / dark theme  
+* &#8451; | &#8457;
 
 ## Dependencies
 [redux](https://redux.js.org/)  
