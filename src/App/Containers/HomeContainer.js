@@ -23,7 +23,7 @@ class HomeContainer extends Component {
 
         const currentWeather = await appDataProvider.getCurrentWeather(location.Key, isMetric)
             .catch(err => {
-                this.setState({ hasError: true, errorDetails: err.response.data })
+                this.setState({ hasError: true, errorDetails: err })
             });
 
         if (this.state.hasError) {
@@ -32,7 +32,7 @@ class HomeContainer extends Component {
 
         const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric)
             .catch(err => {
-                this.setState({ hasError: true, errorDetails: err.response.data })
+                this.setState({ hasError: true, errorDetails: err })
             });
 
         if (!this.state.hasError) {
@@ -46,7 +46,7 @@ class HomeContainer extends Component {
         const { latitude, longitude } = coords;
         const location = await appDataProvider.getLocationGeoposition(latitude, longitude)
             .catch(err => {
-                this.setState({ hasError: true, errorDetails: err.response.data })
+                this.setState({ hasError: true, errorDetails: err })
             });
 
         if (!this.state.hasError) {
@@ -58,7 +58,7 @@ class HomeContainer extends Component {
         const defaultCity = 'tel aviv';
         const location = await appDataProvider.getLocation(defaultCity)
             .catch(err => {
-                this.setState({ hasError: true, errorDetails: err.response.data })
+                this.setState({ hasError: true, errorDetails: err })
             });
 
         if (!this.state.hasError) {
@@ -73,8 +73,10 @@ class HomeContainer extends Component {
     }
 
     render() {
-        if (this.state.hasError) {
-            throw this.state.errorDetails;
+        const { hasError, errorDetails } = this.state;
+
+        if (hasError) {
+            throw errorDetails;
         }
 
         return (

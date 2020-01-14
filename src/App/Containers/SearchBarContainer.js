@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -11,33 +11,53 @@ import {
     setLocationForecast
 } from '../../actions';
 
-const SearchBarContainer = props => {
-    const { currentSearch, setCurrentSearch } = props;
+class SearchBarContainer extends Component {
+    state = { haseError: false, errorDetailes: null };
 
-    const onSearchSubmit = async locationName => {
+    onSearchError = error => {
+        this.setState({ haseError: true, errorDetailes: error });
+    }
+
+    onSearchSubmit = async locationName => {
         const {
             isMetric,
             setCurrentLocation,
             setCurrentWeather,
             setLocationForecast
-        } = props;
+        } = this.props;
 
-        const location = await appDataProvider.getLocation(locationName);
-        const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric);
-        const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric);
+        const location = await appDataProvider.getLocation(locationName)
+            .catch(this.onSearchError);
+
+        const currentweather = await appDataProvider.getCurrentWeather(location.Key, isMetric)
+            .catch(this.onSearchError);
+
+        const locationForecast = await appDataProvider.getLocationForecast(location.Key, isMetric)
+            .catch(this.onSearchError);
 
         setCurrentLocation(location);
         setCurrentWeather(currentweather);
         setLocationForecast(locationForecast);
-    };
+    }
 
-    return (
-        <SearchBar
-            currentSearch={currentSearch}
-            onSearchSubmit={onSearchSubmit}
-            onSearchChange={setCurrentSearch}
-        />
-    );
+    render() {
+        const { haseError, errorDetailes } = this.state;
+
+        if (haseError) {
+            throw errorDetailes;
+        }
+
+        const { currentSearch, setCurrentSearch } = this.props;
+
+        return (
+            <SearchBar
+                onSearchError={this.onSearchError}
+                currentSearch={currentSearch}
+                onSearchSubmit={this.onSearchSubmit}
+                onSearchChange={setCurrentSearch}
+            />
+        );
+    }
 };
 
 const mapStateToProps = ({ settings, search }) => {

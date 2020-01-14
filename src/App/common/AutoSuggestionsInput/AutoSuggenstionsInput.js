@@ -37,12 +37,16 @@ const AutoSuggenstionsInput = props => {
         );
     };
 
-    const onSuggestionsFetchRequested = debounce(({ value }) => {
-        appDataprovider.getSearchSuggestions(value)
-            .then(({ data }) => {
-                setSuggestions(data);
-            })
-            .catch(error => { throw error.response.data });
+    const onSuggestionsFetchRequested = debounce( async ({ value }) => {
+        const { onSearchError } = props;
+
+        try {
+            const suggestions = await appDataprovider.getSearchSuggestions(value)
+            
+            setSuggestions(suggestions);
+        } catch (error) {
+            onSearchError(error);
+        }
     }, 500);
 
     const onSuggestionsClearRequested = async () => {

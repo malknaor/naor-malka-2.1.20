@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -9,8 +9,11 @@ import {
     changeMetric,
     setLocationForecast
 } from '../../actions';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 const AppContainer = props => {
+    const [appError, setAppError] = useState({ hasError: false, errorDetails: null });
+
     const {
         isDarkMode,
         isMetric,
@@ -19,28 +22,41 @@ const AppContainer = props => {
     } = props;
 
     const onUnitsChange = async () => {
-        const {
-            isMetric,
-            currentLocation,
-            setLocationForecast
-        } = props;
+        try {
+            const {
+                isMetric,
+                currentLocation,
+                setLocationForecast
+            } = props;
 
-        const locationForecast = await appDataProvider.getLocationForecast(currentLocation.Key, !isMetric);
+            if (currentLocation) {
+                const locationForecast = await appDataProvider.getLocationForecast(currentLocation.Key, !isMetric)
+                    .catch(error => { throw error });
 
-        setLocationForecast(locationForecast);
+                setLocationForecast(locationForecast);
+            }
+        } catch (error) {
+            setAppError({ hasError: true, errorDetails: error })
+        }
     };
 
+    if (appError.hasError) {
+        throw appError.errorDetails;
+    }
+
     return (
-        <App
-            isDarkMode={isDarkMode}
-            isMetric={isMetric}
-            changeTheme={changeTheme}
-            changeMetric={() => {
-                changeMetric();
-                onUnitsChange();
-            }}
-            onUnitsChange={onUnitsChange}
-        />
+        <ErrorBoundary>
+            <App
+                isDarkMode={isDarkMode}
+                isMetric={isMetric}
+                changeTheme={changeTheme}
+                changeMetric={() => {
+                    changeMetric();
+                    onUnitsChange();
+                }}
+                onUnitsChange={onUnitsChange}
+            />
+        </ErrorBoundary>
     );
 };
 

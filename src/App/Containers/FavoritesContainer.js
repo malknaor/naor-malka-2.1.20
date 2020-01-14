@@ -8,22 +8,31 @@ import Favorites from '../Favorites/Favorites';
 import { setFavorites, removeFromFavorites } from '../../actions';
 
 class FavoritesContainer extends Component {
+    state = { hasError: false, errorDetails: null }
+
     getFavoritesCurrnetWeather = async () => {
         const { favorites, setFavorites } = this.props;
+        const favoritesErrors = [];
         const newFavorites = [];
 
         Promise.all(
             favorites.map(async favorite => {
-                if (!favorite.weather) {
-                    const weather = await appDataPriveder.getCurrentWeather(favorite.location.Key);
+                try {
+                    if (!favorite.weather) {
+                        const weather = await appDataPriveder.getCurrentWeather(favorite.location.Key);
 
-                    newFavorites.push({ location: favorite.location, weather });
-                } else {
-                    newFavorites.push({ location: favorite.location, weather: favorite.weather });
+                        newFavorites.push({ location: favorite.location, weather });
+                    } else {
+                        newFavorites.push({ location: favorite.location, weather: favorite.weather });
+                    }
+                } catch (error) {
+                    favoritesErrors.push(error);
                 }
             })
         ).then(() => {
-            if (newFavorites.length > 0) {
+            if (favoritesErrors.length > 0) {
+                this.setState({ hasError: true, errorDetails: favoritesErrors[0] });
+            } else if (newFavorites.length > 0) {
                 setFavorites(newFavorites);
             }
         });
@@ -44,13 +53,19 @@ class FavoritesContainer extends Component {
 
     componentDidMount() {
         const { favorites } = this.props;
-        
+
         if (favorites.length > 0) {
             this.getFavoritesCurrnetWeather();
         }
     }
 
     render() {
+        const { hasError, errorDetails } = this.state;
+
+        if (hasError) {
+            throw errorDetails;
+        }
+
         const { isMetric, favorites } = this.props;
 
         return (
