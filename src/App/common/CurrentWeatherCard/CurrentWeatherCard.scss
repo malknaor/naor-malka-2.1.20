@@ -3,15 +3,15 @@
   flex: wrap;
   justify-content: center;
   align-self: flex-start;
+  border-radius: 20px;
+  width: 100%;
+  margin: 1%;
+  transition: .3s ease;
+  overflow-y: auto;
   background-color: var(--color-third-surface);
   color: var(--color-solid);
   border: 1px solid var(--color-theme);
-  border-radius: 20px;
-  width: fit-content;
-  transition: .3s ease;
   box-shadow: var(--box-shadow);
-  margin: 1%;
-  overflow-y: auto;
     
   &::-webkit-scrollbar {
       display: none;

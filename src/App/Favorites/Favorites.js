@@ -32,7 +32,9 @@ const Favorites = props => {
 
     return (
         <div className="favorites-container">
-            {renderFavorites()}
+            <ul className="favorites-container__favorites-list">
+                {renderFavorites()}
+            </ul>
         </div>
     );
 };

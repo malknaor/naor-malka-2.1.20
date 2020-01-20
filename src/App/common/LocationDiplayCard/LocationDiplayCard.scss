@@ -8,8 +8,6 @@
   height: fit-content;
   min-height: 100%;
   width: 100%;
-  max-height: fit-content;
-  min-height: 100%;
   transition: 0.3s ease;
   box-shadow: var(--box-shadow);
   border: 1px solid var(--color-theme);
@@ -156,4 +154,10 @@
       }
     }
   }
+}
+
+@media only screen and (max-width: 600px){
+    .forecast__daily {
+      flex-direction: column;
+    }
 }

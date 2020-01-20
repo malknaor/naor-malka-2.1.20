@@ -6,11 +6,13 @@
     align-items: stretch;
     width: 100%;
     background-color: var(--color-secondary-surface);
-    min-height: 90%;
-    overflow-y: auto;
+    min-height: fit-content;
 
-    &::-webkit-scrollbar {
-        display: none;
+    &__favorites-list {
+        flex: 1;
+        display: flex;
+        padding: 1%;
+        width: 100%;
     }
 
     &__no-favorites {
@@ -19,5 +21,11 @@
         color: var(--color-solid);
         text-align: center;
         white-space: nowrap;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .favorites-container__favorites-list {
+        flex-direction: column;
     }
 }

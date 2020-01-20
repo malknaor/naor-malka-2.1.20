@@ -6,11 +6,6 @@
     width: 100%;
     background-color: var(--color-secondary-surface);
     min-height: fit-content;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
     
     &__Search{
         flex: 0.1;
