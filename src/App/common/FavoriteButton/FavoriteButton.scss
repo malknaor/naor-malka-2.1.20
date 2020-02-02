@@ -1,0 +1,13 @@
+.fav-button {
+  display: flex;
+  align-self: center;
+  color: red;
+  border-bottom: 1px solid transparent;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  max-width: fit-content;
+
+  &:hover {
+    border-bottom: 1px solid red;
+  }
+}

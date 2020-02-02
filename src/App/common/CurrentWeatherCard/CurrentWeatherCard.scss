@@ -69,15 +69,5 @@
     flex: 0.3;
     display: flex;
     font-size: calc(2rem + 1vw);
-    align-self: center;
-    color: red;
-    border-bottom: 1px solid transparent;
-    border-radius: 50%; 
-    transition: .3s ease;
-    max-width: fit-content;
-    
-    &:hover {
-      border-bottom: 1px solid red;
-    }
   }
 }
