@@ -9,7 +9,7 @@ const FavoriteButton = props => {
     const [isFav, setIsFav] = useState(localStorageService.isLocationFavorite(location.Key));
 
     const onClick = () => {
-        if (removeFavorite && localStorageService.isLocationFavorite(location.Key)) {
+        if (removeFavorite === localStorageService.isLocationFavorite(location.Key)) {
             removeFavorite(location)
         } else if (addToFavorites) {
             addToFavorites(location);
